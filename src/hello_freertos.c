@@ -15,6 +15,16 @@ static void PIOx_IRQHandler(void)
     can2040_pio_irq_handler(&cbus);
 }
 
+static void transmit(void)
+{
+    struct can2040_msg msg;
+    msg.id = 1;
+    msg.dlc = 1;
+    msg.data[0] = 12;
+    can2040_transmit(&cbus, &msg);
+}
+
+
 void canbus_setup(void)
 {
     uint32_t pio_num = 0;
