@@ -10,10 +10,11 @@
 #define TEST_RUNNER_STACK_SIZE configMINIMAL_STACK_SIZE
 
 static struct can2040 cbus;
+int x = 1;
 
 static void can2040_cb(struct can2040 *cd, uint32_t notify, struct can2040_msg *msg)
 {
-    //printf("2");
+    printf("2");
 
 }
 
@@ -28,7 +29,7 @@ static void transmit(void)
     msg.id = 1;
     msg.dlc = 1;
     msg.data[0] = 12;
-    can2040_transmit(&cbus, &msg);
+    x = can2040_transmit(&cbus, &msg);
 }
 
 
@@ -67,11 +68,12 @@ void canbus_setup(void)
 
 void runner_thread (__unused void *args)
 {
-    //request = xQueueCreate(100, sizeof(struct request_msg));
+    //queue = xQueueCreate(100, sizeof(struct request_msg));
     while(1){
-        printf("transmit");
+        printf("transmit\n");
         transmit();
-        vTaskDelay(2000);
+        printf("x: %d\n", x);
+        vTaskDelay(5000);
     }
 }
 
