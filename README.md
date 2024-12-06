@@ -21,6 +21,11 @@ Combine the send and receive code together, so each microcontroller does both.
 On one board, broadcast messages with a high priority continuously.
 On the other board, broadcast a message with a lower priority periodically.
 Use oscilloscope to observe the access pattern.
+
+![Application Screenshot](https://github.com/uofu-emb/2024-Lab8-Chase-Stephen/blob/working/images/image0.jpg)
+
+Image 1. Observed waveforms on oscilloscope.
+
 Observe how often the lower priority message is actually transmitted and received.
 
 ![Application Screenshot](https://github.com/uofu-emb/2024-Lab8-Chase-Stephen/blob/working/images/Lab8_5.png)
