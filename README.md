@@ -9,7 +9,7 @@ On one board, create a function that sends a message periodically using can2040_
 On another board, register a callback with can_callback_config to receive and log the messages.
 Verify that the two are communicating.
 
-![Application Screenshot](images/lab8_1.png)
+![Application Screenshot](https://github.com/uofu-emb/2024-Lab8-Chase-Stephen/blob/working/images/Lab8_1.png)
 
 Screenshot 1.
 We can see 
