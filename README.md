@@ -22,19 +22,19 @@ On one board, broadcast messages with a high priority continuously.
 On the other board, broadcast a message with a lower priority periodically.
 Use oscilloscope to observe the access pattern.
 
-![Application Screenshot](https://github.com/uofu-emb/2024-Lab8-Chase-Stephen/blob/working/images/image0.jpg)
+![Application Screenshot2](https://github.com/uofu-emb/2024-Lab8-Chase-Stephen/blob/working/images/image0.jpg)
 
 Image 1. Observed waveforms on oscilloscope.
 
 Observe how often the lower priority message is actually transmitted and received.
 
-![Application Screenshot](https://github.com/uofu-emb/2024-Lab8-Chase-Stephen/blob/working/images/Lab8_5.png)
+![Application Screenshot3](https://github.com/uofu-emb/2024-Lab8-Chase-Stephen/blob/working/images/lab8_5.png)
 
 Screenshot 2. The higher priority message with data=12 is transmitted and received continuously, while the lower priority message with data=11 is only received once, then never received again because it is starved by the continuous high priority transmission.
 
 Introduce a short busy wait delay into the babbling node, slowly increase the duration until you observe the other messages consistently received.
 Document your observations in your repository.
 
-![Application Screenshot](https://github.com/uofu-emb/2024-Lab8-Chase-Stephen/blob/working/images/Lab8_6.png)
+![Application Screenshot4](https://github.com/uofu-emb/2024-Lab8-Chase-Stephen/blob/working/images/lab8_6.png)
 
 Screenshot 3. The high prioirity message is still transmitting almost continuously, but once in a while the lower priority message (data=11) is received.
