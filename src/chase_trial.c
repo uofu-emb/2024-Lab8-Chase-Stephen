@@ -26,11 +26,11 @@ static void PIOx_IRQHandler(void) {
 // Function to transmit a CAN message
 static void transmit(void) {
     struct can2040_msg msg;
-    msg.id = 1;
+    msg.id = 0x123;
     msg.dlc = 1;
-    msg.data[0] = 12;
+    msg.data[0] = 11;
     
-    if (can2040_transmit(&cbus, &msg)) {
+    if (can2040_transmit(&cbus, &msg) >= 0) {
         printf("Message transmitted with ID: %u, Data: %u\n", msg.id, msg.data[0]);
     } else {
         printf("Message transmission failed\n");
@@ -61,7 +61,8 @@ void canbus_setup(void) {
 void transmit_task(void *args) {
     while (1) {
         transmit();
-        vTaskDelay(pdMS_TO_TICKS(5000)); // Delay between transmissions
+        //vTaskDelay(pdMS_TO_TICKS(5000)); // Delay between transmissions
+        vTaskDelay(pdMS_TO_TICKS(500)); // Delay between transmissions
     }
 }
 
@@ -91,7 +92,7 @@ int main(void) {
 
     // Create Tasks for transmit and receive
     xTaskCreate(transmit_task, "TransmitTask", TEST_RUNNER_STACK_SIZE, NULL, TEST_RUNNER_PRIORITY, NULL);
-    xTaskCreate(receive_task, "ReceiveTask", TEST_RUNNER_STACK_SIZE, NULL, TEST_RUNNER_PRIORITY, NULL);
+    xTaskCreate(receive_task, "ReceiveTask", TEST_RUNNER_STACK_SIZE, NULL, tskIDLE_PRIORITY + 3UL, NULL);
 
     printf("Starting scheduler\n");
     vTaskStartScheduler(); // Start FreeRTOS scheduler

@@ -59,8 +59,8 @@ int main(void)
     struct can2040_msg tx_message;
     tx_message.id = 0x123;
     tx_message.dlc = 3;
-    tx_message.data[0] = 12;
-    tx_message.data[1] = 2;
+    tx_message.data[0] = 1;
+    tx_message.data[1] = 0;
     tx_message.data[2] = 1;
 
     for (int i = 0; i < 100; i++){
