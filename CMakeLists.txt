@@ -75,5 +75,8 @@ target_link_libraries(can2040 PRIVATE
   hardware_structs
   pico_stdlib
 )
+set(CAN_PATH /home/stephen/Desktop/5785/2024-Lab8-Chase-Stephen/lib/can)
+include(${CAN_PATH}/can2040.cmake)
+include_directories(${CAN_PATH}/src)
 
 
